@@ -81,18 +81,16 @@ select = figures[menu]
 print("선택한 도형 : %s" % select)
 if select == 'circle':
     radius, area = getCircleArea()
-    print("반지름이 {rad}인 원의 넓이는 [ {area:.2f} ] 입니다.".format(rad=radius, area=area))
-
+    print("\n계산 결과\n\t: 반지름이 {rad}인 원의 넓이는 [ {area:.2f} ] 입니다.".format(rad=radius, area=area))
 
 elif select == 'triangle':
     width, height, area = getTriangleArea()
-    print("밑변이 {width}이고 높이가 {height}인 삼각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, height=height, area=area))
-
+    print("\n계산 결과\n\t: 밑변이 {width}이고 높이가 {height}인 삼각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, height=height, area=area))
 
 elif select == 'rectangle':
     width, height, area = getRectangleArea()
-    print("가로의 길이가 {width}이고 세로가 {height}인 직사각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, height=height, area=area))
+    print("\n계산 결과\n\t: 가로의 길이가 {width}이고 세로가 {height}인 직사각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, height=height, area=area))
 
 elif select == 'square':
     width, area = getRectangleArea(True)
-    print("한 변의 길이가 {width}인 정사각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, area=area))
+    print("\n계산 결과\n\t: 한 변의 길이가 {width}인 정사각형의 넓이는 [ {area:.2f} ] 입니다.".format(width=width, area=area))
