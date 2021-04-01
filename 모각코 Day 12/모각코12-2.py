@@ -82,13 +82,17 @@ class Theater():
         ticket = {"movie": '',
                   "nPerson": 0,
                   "discount": 0,
-                  "price": self.price}
+                  "price": 0}
 
+        # 영화 선택
         movie = self.AskMovie()
         print(f"[System]\t[ {movie} ] 을(를) 선택하셨습니다.")
+
+        # 관람 인원 수 선택
         nPerson = self.AskNumber()
         print(f"[System]\t총 {nPerson} 명 관람")
 
+        # 할인권 사용 여부 선택
         print("[System]\t할인권을 사용하시겠습니까? (할인권 사용 또는 금액 확인 화면으로 이동)")
         answer = input("\t할인권 사용 (Y) / 사용하지 않음(금액 확인) (N) :\t")
         while answer not in ['Y', 'y', 'N', 'n']:
@@ -99,7 +103,7 @@ class Theater():
             voucher = self.AskDiscount()
             if voucher != '':
                 discount = self.discounts[voucher]
-                print(f"[System]\t[ {voucher} ] 할인권이 적용되어 [ {discount} ] 원이 할인됩니다.")
+                print(f"[System]\t[ {voucher} ] 할인권이 적용되어 인당 [ {discount} ] 원이 할인됩니다.")
             else:
                 print("[System]\t할인권을 사용하지 않습니다.")
                 discount = 0
@@ -107,11 +111,11 @@ class Theater():
             print("[System]\t할인권을 사용하지 않습니다.")
             discount = 0
 
+        # 티켓 예매
         ticket['movie'] = movie
         ticket['nPerson'] = nPerson
-        ticket['discount'] = discount
-        ticket['price'] = self.price * ticket['nPerson']
-
+        ticket['discount'] = discount * nPerson
+        ticket['price'] = self.price * nPerson
         return ticket
 
 
