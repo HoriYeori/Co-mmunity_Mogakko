@@ -22,13 +22,17 @@ while True:
 print()
 print("\t12시간제로 변환된 24시간제 시간입니다.\n")
 
-if time24[0] < 12:      # 오전
-    print(f"\t24시간제 시간 %02d : %02d 은\n\t12시간제로 %02d : %02d AM 입니다."
-          % (time24[0], time24[1], time24[0], time24[1]))
-else:       # 오후
-    if time24[0] == 12:
-        print(f"\t24시간제 시간 %02d : %02d 은\n\t12시간제로 %02d : %02d PM 입니다."
-              % (time24[0], time24[1], time24[0], time24[1]))
-    else:
-        print(f"\t24시간제 시간 %02d : %02d 은\n\t12시간제로 %02d : %02d PM 입니다."
-              % (time24[0], time24[1], time24[0] - 12, time24[1]))
+time12 = [0, 0]
+if time24[0] == 0:  # 자정 0시는 오전 12시
+    time12[0] = 12
+elif time24[0] > 12:   # 오후
+    time12[0] = time24[0] - 12
+else:
+    time12[0] = time24[0]
+time12[1] = time24[1]
+
+print(f"\t24시간제 시간 %02d : %02d 은" % (time24[0], time24[1]))
+if time24[0] < 12:
+    print(f"\t12시간제로 %02d : %02d AM 입니다." % (time12[0], time12[1]))
+else:
+    print(f"\t12시간제로 %02d : %02d PM 입니다." % (time12[0], time12[1]))
